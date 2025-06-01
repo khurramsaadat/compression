@@ -15,7 +15,7 @@ interface CompressedResult {
 }
 
 const PostCompressionBlock = () => (
-  <div className="max-w-2xl w-full mt-10 text-center flex flex-col items-center gap-4 text-gray-800">
+  <div className="max-w-2xl w-full mt-10 text-center flex flex-col items-center gap-4 text-gray-800 dark:text-gray-200 transition-colors duration-300">
     <div className="text-base mb-2">It takes time and money for development and server costs for this app</div>
     <div className="text-lg font-semibold mb-2">If you like it, <a href="#" className="text-blue-600 underline">consider one time purchase of $10. Use forever!</a></div>
     <div className="mb-2">We offer regional pricing in some countries. <a href="#" className="text-blue-600 underline">Click here to check!</a></div>
@@ -120,11 +120,11 @@ export default function Home() {
       </Hero>
       {selectedFiles.length > 0 && !done && (
         <div className="flex flex-col items-center mt-8">
-          <div className="mb-6 text-lg font-medium text-gray-800">
+          <div className="mb-6 text-lg font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">
             Selected {selectedFiles.length} image{selectedFiles.length > 1 ? 's' : ''}
           </div>
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-lg text-2xl mb-6 shadow-lg transition-colors"
+            className="bg-blue-500 hover:bg-blue-600 dark:bg-blue-900 dark:hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-lg text-2xl mb-6 shadow-lg transition-colors duration-300"
             onClick={handleStartCompression}
             disabled={compressing}
           >
@@ -137,19 +137,19 @@ export default function Home() {
       )}
       {done && results && (
         <div className="flex flex-col items-center mt-12">
-          <h2 className="text-3xl font-bold text-blue-600 mb-4">Done ✓</h2>
+          <h2 className="text-3xl font-bold text-blue-600 dark:text-blue-300 mb-4 transition-colors duration-300">Done ✓</h2>
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded mb-6 shadow"
+            className="bg-blue-500 hover:bg-blue-600 dark:bg-blue-900 dark:hover:bg-blue-800 text-white font-semibold py-3 px-8 rounded mb-6 shadow transition-colors duration-300"
             onClick={handleDownload}
           >
             {results.length === 1 ? 'Download image' : 'Download all as ZIP'}
           </button>
-          <div className="border border-blue-300 rounded-lg p-6 mb-6 bg-white text-center">
-            <div className="text-2xl font-bold mb-2">Saved {percentSaved}%</div>
-            <div className="text-gray-700">{((totalOriginal - totalCompressed) / 1024).toFixed(1)} KB reduced</div>
+          <div className="border border-blue-300 dark:border-blue-700 rounded-lg p-6 mb-6 bg-white dark:bg-gray-900 text-center transition-colors duration-300">
+            <div className="text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100 transition-colors duration-300">Saved {percentSaved}%</div>
+            <div className="text-gray-700 dark:text-gray-300 transition-colors duration-300">{((totalOriginal - totalCompressed) / 1024).toFixed(1)} KB reduced</div>
           </div>
           <button
-            className="text-blue-600 underline text-base mt-2"
+            className="text-blue-600 dark:text-blue-300 underline text-base mt-2 transition-colors duration-300"
             onClick={() => {
               setSelectedFiles([]);
               setResults(null);

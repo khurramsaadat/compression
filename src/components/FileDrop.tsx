@@ -37,8 +37,8 @@ const FileDrop: React.FC<FileDropProps> = ({ onFilesSelected }) => {
     <div className="w-full max-w-4xl mx-auto mt-4">
       <label
         htmlFor="file-upload"
-        className={`flex flex-col items-center justify-center border-4 border-dashed rounded-3xl p-16 transition-colors cursor-pointer w-full ${
-          dragActive ? "border-blue-500 bg-blue-100" : "border-blue-300 bg-blue-50"
+        className={`flex flex-col items-center justify-center border-4 border-dashed rounded-3xl p-16 transition-colors duration-300 cursor-pointer w-full ${
+          dragActive ? "border-blue-500 bg-blue-100 dark:bg-blue-900 dark:border-blue-400" : "border-blue-300 bg-blue-50 dark:bg-gray-800 dark:border-gray-700"
         }`}
         onDragOver={(e) => {
           e.preventDefault();
@@ -50,7 +50,7 @@ const FileDrop: React.FC<FileDropProps> = ({ onFilesSelected }) => {
         role="button"
         aria-label="Select or drop images"
       >
-        <p className="mb-2 text-2xl text-gray-700 font-semibold text-center">
+        <p className="mb-2 text-2xl text-gray-700 dark:text-gray-200 font-semibold text-center transition-colors duration-300">
           Drag and drop images here, or click to select
         </p>
         <input
@@ -62,12 +62,12 @@ const FileDrop: React.FC<FileDropProps> = ({ onFilesSelected }) => {
           className="sr-only"
           onChange={handleChange}
         />
-        <p className="text-base text-gray-500">(JPG, PNG, BMP, up to 100 files)</p>
+        <p className="text-base text-gray-500 dark:text-gray-400 transition-colors duration-300">(JPG, PNG, BMP, up to 100 files)</p>
       </label>
       {selectedFiles.length > 0 && (
-        <div className="mt-4 bg-white rounded shadow p-4">
-          <p className="font-semibold mb-2">Selected {selectedFiles.length} image(s):</p>
-          <ul className="list-disc ml-6 text-gray-700 text-sm max-h-40 overflow-y-auto">
+        <div className="mt-4 bg-white dark:bg-gray-900 rounded shadow p-4 transition-colors duration-300">
+          <p className="font-semibold mb-2 text-gray-900 dark:text-gray-100 transition-colors duration-300">Selected {selectedFiles.length} image(s):</p>
+          <ul className="list-disc ml-6 text-gray-700 dark:text-gray-300 text-sm max-h-40 overflow-y-auto transition-colors duration-300">
             {selectedFiles.map((file, idx) => (
               <li key={idx}>{file.name}</li>
             ))}
